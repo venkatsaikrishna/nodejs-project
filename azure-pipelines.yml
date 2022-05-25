@@ -64,3 +64,19 @@ stages:
         PathtoPublish: '$(System.DefaultWorkingDirectory)/deployment/'
         ArtifactName: 'webinar-artifact'
         publishLocation: 'Container'
+
+- stage: Continuous_deployment
+  displayName: deploy image from CI stage to AKS
+  jobs:
+    - job: deployment
+      displayName: deploy to aks
+      dependsOn: Build
+      pool:
+       name: $(poolName)
+      steps:
+      - task: KubernetesManifest@0
+        inputs:
+          action: 'deploy'
+          kubernetesServiceConnection: 'aks-srv-conn'
+          manifests: '$(Build.SourcesDirectory)/deployment/webinar-app.yaml'
+      
