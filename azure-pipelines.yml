@@ -70,7 +70,7 @@ stages:
   jobs:
     - job: deployment
       displayName: deploy to aks
-      dependsOn: Build
+     # dependsOn: Build
       pool:
        name: $(poolName)
       steps:
