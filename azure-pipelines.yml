@@ -5,9 +5,9 @@ pool:
   name: Default
 
 variables:
-  dockerRegistryServiceConnection: 'cnitaksdemo-conn'
-  imageRepository: 'nodejs-aks'
-  containerRegistry: 'cnitaksdemo.azurecr.io'
+  dockerRegistryServiceConnection: 'acr-srv-conn'
+  imageRepository: 'cnit-nodejs-image'
+  containerRegistry: 'cnitvsknodejs.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
   poolName: 'Default'
